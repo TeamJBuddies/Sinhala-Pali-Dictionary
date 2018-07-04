@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+
+
+        android:id="@+id/action_settings"
+        android:icon="@android:drawable/ic_menu_rotate"
+        android:orderInCategory="100"
+        android:title=""
+        app:showAsAction="always">
+
+        <menu>
+            <item
+                android:id="@+id/sinhala_pali"
+                android:icon="@drawable/ic_menu_send"
+                android:orderInCategory="100"
+                android:title="සිංහල --> පාලි"
+                app:showAsAction="always" />
+            <item
+                android:id="@+id/pali_sinhala"
+                android:icon="@drawable/ic_menu_send"
+                android:orderInCategory="100"
+                android:title="පාලි --> සිංහල"
+                app:showAsAction="always" />
+
+        </menu>
+
+    </item>
+
+</menu>
