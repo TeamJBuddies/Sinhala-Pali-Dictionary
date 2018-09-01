@@ -11,7 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DetialsFragment extends Fragment {
@@ -19,8 +23,11 @@ public class DetialsFragment extends Fragment {
 private String value ="";
 private TextView tvWord;
 private ImageButton btnBokkmark,btnVolume;
-private WebView tvWordTranslate;
 
+
+private ListView wordDetails;
+private DetailsAdapter detailsAdapter;
+private List<WordDetails> mWordDetails;
 
 private DatabaseConnector databaseConnector;
 private int mDicType;
@@ -50,6 +57,8 @@ private int mDicType;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
     }
 
     @Override
@@ -67,13 +76,15 @@ private int mDicType;
         tvWord=(TextView)view.findViewById(R.id.text2);
         btnBokkmark=(ImageButton)view.findViewById(R.id.checkbox);
         btnVolume=(ImageButton)view.findViewById(R.id.spacer);
-        tvWordTranslate=(WebView)view.findViewById(R.id.design_bottom_sheet);
 
-        final WordList wordList = databaseConnector.getWordSearchSinhala(value,mDicType);
 
         tvWord.setText(value);
 
-        tvWordTranslate.loadDataWithBaseURL(null, wordList.value,"text/html","utf-8",null);
+        wordDetails=(ListView)view.findViewById(R.id.details);
+        detailsAdapter=new DetailsAdapter(getContext(),databaseConnector.getMeanings(value,mDicType));
+        wordDetails.setAdapter(detailsAdapter);
+
+      //  final WordList wordList = databaseConnector.getWordSearchSinhala(value,mDicType);
 
         WordList bookmarkWordList = databaseConnector.getWordFromBookmark(value);
         int isMark= bookmarkWordList ==null?0:1;
@@ -93,7 +104,7 @@ private int mDicType;
               if(value==0){
 
                 btnBokkmark.setImageResource(R.drawable.ic_bookmark);
-                databaseConnector.addBookmark(wordList.key,mDicType+"");
+                databaseConnector.addBookmark(tvWord.getText().toString(),mDicType+"");
                 btnBokkmark.setTag(1);
 
               }
@@ -101,7 +112,7 @@ private int mDicType;
 
                   btnBokkmark.setImageResource(R.drawable.ic_bookmark_border);
                   btnBokkmark.setTag(0);
-                  databaseConnector.removeBookmark(wordList.key,mDicType+"");
+                  databaseConnector.removeBookmark(tvWord.getText().toString(),mDicType+"");
 
               }
 

@@ -30,7 +30,8 @@ public class DatabaseConnector extends SQLiteOpenHelper{
     private final String COL_KEY="key";
     private final String COL_VALUE="value";
 
-
+    private char SearchLanguage='E';
+    private int DICTYPE;
 
     public SQLiteDatabase mDB;
 
@@ -102,22 +103,41 @@ public class DatabaseConnector extends SQLiteOpenHelper{
 
     }
 
-    public ArrayList<String > getWord(int dicType){
+    public void SetLanguageType(char language){
 
-        String tableName=getTableName(dicType);
+        this.SearchLanguage=language;
 
-         String q="SELECT * FROM dhanushkatable WHERE `field5`='"+tableName+"' GROUP BY field2";
+    }
+    public void SetDicType(int dicType){
+        this.DICTYPE=dicType;
 
-        Cursor result=mDB.rawQuery(q,null);
+    }
+    public char getLanguageType(){
+        return SearchLanguage;
+    }
 
-        ArrayList<String> source=new ArrayList<>();
+    public ArrayList<String > getWord(String searchWord){
 
-        while (result.moveToNext()){
+        ArrayList<String> source = new ArrayList<>();
+       if(!searchWord.matches("")) {
+           String tableName = getTableName(DICTYPE);
+           String q;
+           if(SearchLanguage=='E') {
+               q = "SELECT * FROM dhanushkatable WHERE `field1` LIKE '" + searchWord + "%' AND `field5`='" + tableName + "' GROUP BY field2";
+           }else {
+               q = "SELECT * FROM dhanushkatable WHERE `field2` LIKE '" + searchWord + "%' AND `field5`='" + tableName + "' GROUP BY field2";
+           }
+           Cursor result = mDB.rawQuery(q, null);
 
-        source.add(result.getString(result.getColumnIndex("field2")));
 
-        }
-            return source;
+           while (result.moveToNext()) {
+
+               source.add(result.getString(result.getColumnIndex("field2")));
+
+           }
+
+       }
+        return source;
     }
 
 
@@ -156,7 +176,24 @@ public class DatabaseConnector extends SQLiteOpenHelper{
         return wordList;
 
     }
+public ArrayList<WordDetails> getMeanings(String word ,int dicType){
 
+        ArrayList<WordDetails> wordDetails=new ArrayList<>();
+
+    String tableName=getTableName(dicType);
+    String q = "SELECT * FROM dhanushkatable where upper(field2)=upper(?) and field5='" + tableName + "'";
+
+    Cursor result = mDB.rawQuery(q, new String[]{word});
+    int i=1;
+    while (result.moveToNext()){
+        wordDetails.add(new WordDetails(result.getString(result.getColumnIndex("field3")),result.getString(result.getColumnIndex("field1")),result.getString(result.getColumnIndex("field4")),i));
+
+        i++;
+    }
+
+     return wordDetails;
+
+}
     public void addBookmark(String key,String value){
 
         try{

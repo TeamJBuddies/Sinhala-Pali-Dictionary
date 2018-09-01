@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
 
    private EditText SearchText;
    MenuItem menuSetting;
-
+   public  int idDicType;
    DictionaryFragment dictionaryFragment;
    BookmarkFragment bookmarkFragment;
 
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-        String id= SharedPreference.getState(MainActivity.this,"dicType");
+        final String id= SharedPreference.getState(MainActivity.this,"dicType");
         int dictype=id==null?R.id.sinhala_pali:Integer.valueOf(id);
         bookmarkFragment=BookmarkFragment.getnewinstance(databaseConnector,dictype);
 
@@ -112,8 +112,10 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                dictionaryFragment.filterValue(charSequence.toString());
+                checkLanguage();
+                ArrayList<String> sourc= databaseConnector.getWord(charSequence.toString());
+                dictionaryFragment.resetDataSource(sourc);
+              //  dictionaryFragment.filterValue(charSequence.toString());
             }
 
             @Override
@@ -154,7 +156,8 @@ public class MainActivity extends AppCompatActivity
 
                 onOptionsItemSelected(menu.findItem(Integer.valueOf(id)));
                         }else {
-                ArrayList<String> sourc= databaseConnector.getWord(R.id.sinhala_pali);
+                ArrayList<String> sourc= databaseConnector.getWord("");
+                databaseConnector.SetDicType(R.id.sinhala_pali);
                 dictionaryFragment.resetDataSource(sourc);
             }
 
@@ -166,22 +169,24 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        int id = item.getItemId();
+       int id = item.getItemId();
 
         if(R.id.action_settings==id) return true;
 
         SharedPreference.saveState(this,"dicType",String.valueOf(id));
 
-        ArrayList<String> source= databaseConnector.getWord(id);
+
+        databaseConnector.SetDicType(id);
 
 
         if (id == R.id.sinhala_pali) {
+            ArrayList<String> source= databaseConnector.getWord(SearchText.getText().toString());
             dictionaryFragment.resetDataSource(source);
             bookmarkFragment.setmDicType(id);
 
         }else
             if(id == R.id.pali_sinhala)
-            {
+            { ArrayList<String> source= databaseConnector.getWord(SearchText.getText().toString());
                 dictionaryFragment.resetDataSource(source);
                 bookmarkFragment.setmDicType(id);
 
@@ -303,6 +308,19 @@ public class MainActivity extends AppCompatActivity
     public  void clearBookmark(){
 
         databaseConnector. CleenBookmark();
+    }
+    public void checkLanguage() {
+        char firsCh = 'A';
+        if (!SearchText.getText().toString().matches("")) {
+            firsCh = SearchText.getText().toString().charAt(0);
+            if (firsCh >= 'a' && firsCh <= 'z' || firsCh >= 'A' && firsCh <= 'Z') {
+                databaseConnector.SetLanguageType('E');
+            } else {
+
+                databaseConnector.SetLanguageType('S');
+            }
+
+        }
     }
 }
 

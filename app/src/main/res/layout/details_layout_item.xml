@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="30dp"
+    android:background="#ffffff"
+    android:paddingLeft="5dp"
+    android:paddingRight="2dp"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp"
+    >
+
+    <TextView
+        android:id="@+id/meaning"
+        android:layout_width="348dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="#ffffff"
+        android:text="meaning"
+        android:textColor="#1d7dd8"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tens"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+
+        android:layout_alignEnd="@+id/meaning"
+        android:layout_below="@+id/meaning"
+        android:text="tens"
+        android:textColor="#ef6cbf"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/englishWord"
+        android:layout_width="319dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tens"
+        android:layout_marginStart="0dp"
+        android:text="English word"
+        android:textColor="#bfb2f2"
+        android:textSize="14sp" />
+
+
+</RelativeLayout>
