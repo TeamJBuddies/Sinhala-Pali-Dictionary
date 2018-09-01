@@ -11,20 +11,7 @@
 
     </group>
 
-    <item android:title="Network">
-        <menu>
-
-            <item
-                android:id="@+id/nav_Rate"
-                android:icon="@drawable/ic_thumb_up"
-                android:title="Rate" />
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-        </menu>
-    </item>
-    <item android:title="Other">
+    <item android:title="information">
         <menu>
 
             <item
