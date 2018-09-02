@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity
    public  int idDicType;
    DictionaryFragment dictionaryFragment;
    BookmarkFragment bookmarkFragment;
+   aboutFragment aboutFragment;
+   helpFragment helpFragment;
 
    FloatingActionButton fab;
     @Override
@@ -69,7 +71,8 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         dictionaryFragment=new DictionaryFragment();
-
+        helpFragment=new helpFragment();
+        aboutFragment=new aboutFragment();
 
 
         final String id= SharedPreference.getState(MainActivity.this,"dicType");
@@ -206,9 +209,9 @@ public class MainActivity extends AppCompatActivity
             goTpFragment(bookmarkFragment,false);
 
         } else if (id == R.id.nav_About) {
-
+            goTpFragment(aboutFragment,false);
         } else if (id == R.id.nav_Help) {
-
+            goTpFragment(helpFragment,false);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ffffff">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,7 +12,7 @@
         android:paddingLeft="1dp"
         android:paddingRight="1dp"
         android:elevation="1.46dp"
-        android:background="#d7edf9"
+        android:background="#ffffff"
          >
 
         <TextView
@@ -23,14 +24,14 @@
             android:text="Details"
             android:textColor="#ed314d"
             android:textSize="18sp"
-            android:background="#d7edf9"/>
+            android:background="#ffffff"/>
 
         <ImageButton
             android:id="@+id/spacer"
             android:layout_width="60dp"
             android:layout_height="37dp"
             android:layout_gravity="bottom"
-            android:background="#d7edf9"
+            android:background="#ffffff"
             android:src="@drawable/ic_volume_up" />
 
         <ImageButton
@@ -38,7 +39,7 @@
             android:layout_width="60dp"
             android:layout_height="36dp"
             android:layout_gravity="bottom"
-            android:background="#d7edf9"
+            android:background="#ffffff"
             android:src="@drawable/ic_bookmark_border" />
 
     </LinearLayout>
@@ -52,6 +53,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="0dp"
         android:background="#ffffff"
-        android:gravity="center" />
+        android:gravity="center"
+        android:dividerHeight="2sp"
+        android:divider="#83bcec"/>
 
 </LinearLayout>
