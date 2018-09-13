@@ -186,7 +186,7 @@ public ArrayList<WordDetails> getMeanings(String word ,int dicType){
     Cursor result = mDB.rawQuery(q, new String[]{word});
     int i=1;
     while (result.moveToNext()){
-        wordDetails.add(new WordDetails(result.getString(result.getColumnIndex("field3")),result.getString(result.getColumnIndex("field1")),result.getString(result.getColumnIndex("field4")),i));
+        wordDetails.add(new WordDetails(result.getString(result.getColumnIndex("field3")),result.getString(result.getColumnIndex("field2")),result.getString(result.getColumnIndex("field4")),i));
 
         i++;
     }

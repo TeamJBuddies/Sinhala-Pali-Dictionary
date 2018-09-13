@@ -31,11 +31,12 @@ public class MainActivity extends AppCompatActivity
     DatabaseConnector databaseConnector;
 
    private EditText SearchText;
-   MenuItem menuSetting;
+   MenuItem menuSetting,CurrentMenuItemInNavigatinon;
+   boolean MenueSelected=false;
    public  int idDicType;
    DictionaryFragment dictionaryFragment;
    BookmarkFragment bookmarkFragment;
-   aboutFragment aboutFragment;
+   AboutFragment aboutFragment;
    helpFragment helpFragment;
 
    FloatingActionButton fab;
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity
 
         dictionaryFragment=new DictionaryFragment();
         helpFragment=new helpFragment();
-        aboutFragment=new aboutFragment();
+        aboutFragment = new AboutFragment();
 
 
         final String id= SharedPreference.getState(MainActivity.this,"dicType");
@@ -136,9 +137,10 @@ public class MainActivity extends AppCompatActivity
         fab.findViewById(R.id.search_voice_btn).setVisibility(View.VISIBLE);
         toolbar.findViewById(R.id.edit_search).setVisibility(View.VISIBLE);
         toolbar.setTitle("");
-
-
-
+       if(MenueSelected==true) {
+           CurrentMenuItemInNavigatinon.setEnabled(true);//set selected menu enable true
+       }
+       MenueSelected=false;
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -202,8 +204,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
+        if(MenueSelected==true) {
+            CurrentMenuItemInNavigatinon.setEnabled(true);//set selected menu enable true
+        }
+
+        int id = item.getItemId();
+         item.setEnabled(false);
+         MenueSelected=true;
+        CurrentMenuItemInNavigatinon=item;//catch current select menu
         if (id == R.id.nav_Bookmark) {
 
             goTpFragment(bookmarkFragment,false);
@@ -325,5 +334,6 @@ public class MainActivity extends AppCompatActivity
 
         }
     }
+
 }
 

@@ -7,7 +7,7 @@
 
 
         android:id="@+id/action_settings"
-        android:icon="@android:drawable/ic_menu_rotate"
+        android:icon="@drawable/ic_swap_horiz_black_24dp"
         android:orderInCategory="100"
         android:title=""
         app:showAsAction="always">

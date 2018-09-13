@@ -17,6 +17,7 @@
 
         <TextView
             android:id="@+id/text2"
+            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -55,6 +56,9 @@
         android:background="#ffffff"
         android:gravity="center"
         android:dividerHeight="2sp"
-        android:divider="#83bcec"/>
+        android:divider="#ffffff"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="5dp"/>
 
 </LinearLayout>
