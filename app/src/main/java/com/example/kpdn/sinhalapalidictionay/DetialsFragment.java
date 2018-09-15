@@ -13,6 +13,7 @@ import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,6 +106,7 @@ private int mDicType;
 
                 btnBokkmark.setImageResource(R.drawable.ic_bookmark);
                 databaseConnector.addBookmark(tvWord.getText().toString(),mDicType+"");
+                  Toast.makeText(getContext(),"පිටු සලකුණක් යෙදුවා", Toast.LENGTH_SHORT).show();
                 btnBokkmark.setTag(1);
 
               }
@@ -113,6 +115,7 @@ private int mDicType;
                   btnBokkmark.setImageResource(R.drawable.ic_bookmark_border);
                   btnBokkmark.setTag(0);
                   databaseConnector.removeBookmark(tvWord.getText().toString(),mDicType+"");
+                  Toast.makeText(getContext(),"පිටු සලකුණ ඉවත් කරන ලදි", Toast.LENGTH_SHORT).show();
 
               }
 
