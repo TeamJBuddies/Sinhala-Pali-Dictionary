@@ -14,7 +14,7 @@
         <activity
             android:theme="@style/AppTheme.NoActionBa"
             android:name=".Splashscreen"
-
+            android:screenOrientation="portrait"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,6 +25,7 @@
             android:name=".MainActivity"
             android:label="පාලි"
             android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
             ></activity>
     </application>
 
