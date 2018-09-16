@@ -27,13 +27,7 @@
             android:textSize="18sp"
             android:background="#ffffff"/>
 
-        <ImageButton
-            android:id="@+id/spacer"
-            android:layout_width="60dp"
-            android:layout_height="37dp"
-            android:layout_gravity="bottom"
-            android:background="#ffffff"
-            android:src="@drawable/ic_volume_up" />
+
 
         <ImageButton
             android:id="@+id/checkbox"
