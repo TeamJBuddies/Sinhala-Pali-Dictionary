@@ -1,1 +1,36 @@
 
+<resources>
+    <string name="app_name">SinhalaPaliDictionay</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Help_String">මෙහි භාවිත කර ඇති කෙටි යෙදුම්\n\n
+
+පු - පුල්ලිංග\n
+ඉ - ඉත්ථිලිංග\n
+න - නපුංසකලිංග\n
+3. - තුන්ලිගුවෙහිම යෙදේ\n
+නි - නිපාත\n
+නා - නාමපද\n
+ස - සමාස\n
+පු.ක්‍රි. - පූර්ව  ක්‍රියා\n
+අ. ක්‍රි. - අතීත ක්‍රියා\n
+ක්‍රි. වි. - ක්‍රියා විශේෂණ\n
+සි - සිංහල වචන\n\n
+
+
+මෙහිදී,\n\n
+අවශ්‍යතාවය අනුව සිංහල හා පාලි භාෂාව අතර හුවමාරු වීමේ හැකියාව ඇත.\n\n
+
+තේරුම් දැන ගැනීම සඳහා අවශ්‍ය වචනය වාචිකව ලබා දීමෙන් නිවැරදි තේරුම ලබා ගත හැකිය.\n
+
+මෘදුකාංගය මගින් යෝජනා කර ඇති වචන තේරීමෙන්ද නිවැරදි තේරුම සොයා ගත හැකි වේ.\n\n
+</string>
+
+    <string name="About_String">About Details</string>
+</resources>
